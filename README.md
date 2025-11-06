@@ -1,111 +1,87 @@
-# 🧩 TestRail Extension for Goose
+🧰 Prerequisites
+Python 3.12+
 
-This extension connects **Goose** with **TestRail**, allowing Goose to fetch test runs, test results, and statuses directly from your TestRail instance — eliminating manual updates and streamlining QA automation.
+pip and virtualenv (optional: pyenv)
 
----
+No VPN (for package installs)
 
-## ⚙️ 1. Prerequisites
 
-### 🪟 Windows
-- **Python** ≥ 3.12.2 (recommended)  
-  👉 [Download here](https://www.python.org/downloads/)
-- **uv** (lightweight Python package manager)  
-  ```bash
-  pip install uv
-  ```
-- **Git** installed and added to PATH  
-  👉 [Download Git](https://git-scm.com/downloads)
 
-### 🍎 macOS
-- **Python** ≥ 3.12.2 (via [pyenv](https://github.com/pyenv/pyenv) or [Homebrew](https://brew.sh))  
-  ```bash
-  brew install python@3.12
-  ```
-- **uv** installed globally  
-  ```bash
-  pip install uv
-  ```
-- **Full Disk Access for Goose**  
-  *(System Settings → Privacy & Security → Full Disk Access → enable Terminal/Goose)*
+💻 MAC / Linux Setup
+1. Unzip the project 
 
----
+Run this in terminal:
+cd <path to where the zipfile is unzipped>
 
-## 📦 2. Setup Instructions
+Example:cd Downloads (if the file is present in and unzipped in downloads folder)
 
-1. **Extract the ZIP**  
-   Unzip `mcp-testrail-final-26thMay2025.zip` into a preferred location, e.g.:
-   ```
-   /Users/<username>/Downloads/mcp-testrail-final-26thMay2025/
-   ```
+cd mcp-testrail-tool-pip-fixed
 
-2. **Create the Virtual Environment**  
-   In Terminal (or Command Prompt), navigate into the extracted folder and run:
-   ```bash
-   uv sync
-   ```
-   This installs all required dependencies and creates a `.venv` environment compatible with Goose.
 
-3. **Set TestRail Credentials (no manual `.env` file needed)**  
-   Run this command in the same directory:
+2. Create and activate virtual environment
 
-   ```bash
-   echo -e "TESTRAIL_URL=https://afterpay.testrail.io\nTESTRAIL_USER=your-email@example.com\nTESTRAIL_API_KEY=your-api-key" > .env
-   ```
+python3 -m venv .venv
 
-   ✅ This automatically creates a `.env` file with your TestRail credentials.
+source .venv/bin/activate
 
----
+3. Install dependencies
 
-## 🦢 3. Enable the Extension in Goose
+pip install .
 
-Open **Goose → Settings → Extensions → Add New**, then fill out the following fields:
 
-| **Field** | **Value** |
-|------------|-----------|
-| **Name** | Testrail |
-| **Description** | Testrail tools |
-| **Type** | StandardIO |
-| **Command** | `uv run /full/path/to/.venv/bin/<folder-name>` |
+🪟 Windows Setup
+1. Unzip the folder manually or:
+Use File Explorer or PowerShel to unzip the file:
+Expand-Archive .\mcp-testrail-tool-pip-fixed.zip -DestinationPath .\mcp-testrail-tool-pip-fixed 
 
----
+cd .\mcp-testrail-tool-pip-fixed
 
-### 💻 Example (macOS)
-```bash
-uv run /Users/purneema/Downloads/mcp-testrail-final-26thMay2025/.venv/bin/mcp-testrail-final-26thMay2025
-```
+2. Create and activate virtualenv
 
-### 🪟 Example (Windows)
-```bash
-uv run C:\Users\<YourName>\Downloads\mcp-testrail-final-26thMay2025\.venv\Scripts\mcp-testrail-final-26thMay2025.exe
-```
+python -m venv .venv
 
-> ⚠️ Make sure the path matches the extracted folder name and location on your system.
+.venv\Scripts\activate
 
----
+3. Install with pip
 
-## ✅ 4. Verify Installation
+pip install .
 
-Once enabled, restart Goose.  
-You can test your setup by running this inside Goose:
 
-```
-/testrail get_test_runs
-```
+🔐 Create .env File (Same for Mac & Windows)
+In the root of the unzipped folder:
 
-If configured correctly, you’ll see a list of TestRail runs retrieved from your instance.
+TESTRAIL_URL=https://afterpay.testrail.io
+TESTRAIL_USER=you@example.com
+TESTRAIL_API_KEY=your-api-key
 
----
 
-## 🧠 Notes
 
-- Keep the `.venv` folder in the same directory as the extension.  
-- Use your **actual TestRail URL** (e.g., `https://afterpay.testrail.io`).  
-- If Goose can’t detect the extension, check for typos in your **Command** path.  
-- Re-run `uv sync` if you update dependencies or Python version.
 
----
+🧠 Enable in Goose
+Go to Settings → Extensions → Add
 
-## 👩‍💻 Author
 
-**Purneema Suresh Rathod**  
-Quality Engineering | Block
+Use these fields:
+
+**Field -        Value**
+Name -         Testrail
+Description -  Testrail tools
+Type -          StandardIO
+
+
+
+Command
+Full path to: .venv/bin/mcp-testrail-tool (or .venv\\Scripts\\... on Windows)
+
+Example (Mac):
+
+/Users/username/mcp-testrail-tool-pip-fixed/.venv/bin/mcp-testrail-tool
+
+Example (Windows):
+
+C:\Users\username\Downloads\mcp-testrail-tool-pip-fixed\.venv\Scripts\mcp-testrail-tool.exe
+
+
+
+
+
